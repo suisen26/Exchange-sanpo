@@ -1,0 +1,59 @@
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+    <div class="container">
+
+      <div class="navbar-brand">
+        <span>
+          <% if admin_signed_in? %>
+            <%= link_to "散歩が好きな人の交流サイト", admin_path, class: "nav-link text-light" %>
+          <% else %>
+            <%= link_to "散歩が好きな人の交流サイト", root_path, class: "nav-link text-light" %>
+          <% end %>
+        </span>
+      </div>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="rounded-circle">
+              <%= link_to "マイページ", root_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "ユーザー一覧", root_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "写真一覧", root_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link text-light" %>
+            </li>
+
+          <% elsif  admin_signed_in? %>
+            <li>
+              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link text-light" %>
+            </li>
+
+          <% else %>
+            <li>
+              <%= link_to "About", about_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "写真一覧", root_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "新規会員登録", new_user_registration_path, class: "nav-link text-light" %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path, class: "nav-link text-light" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+</header>
