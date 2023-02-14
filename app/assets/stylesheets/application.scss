@@ -1,0 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+// Base Color: #BDF09E | 補色
+// refs: https://color.adobe.com/ja/create/color-wheel
+
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=M+PLUS+Rounded+1c&family=Raleway&display=swap');
+
+body {
+  font-family: 'Raleway', 'M PLUS Rounded 1c', sans-serif !important;
+}
+
+.logo {
+  font-family: 'Hachi Maru Pop', cursive;
+  font-size: calc(13px + 1vw);
+}
+
+.btn-rounded {
+  border: 1px solid #fff;
+  border-radius: 5px;
+}
+
+footer {
+  background-color: #BDF09E;
+  height: 60px;
+}
+
+@media screen and (max-width: 1199.98px) {}
+@media screen and (max-width: 991.98px) {
+  .btn-rounded {
+    border: none;
+    border-radius: 0;
+  }
+}
+@media screen and (max-width: 767.98px) {}
+@media screen and (max-width: 575.98px) {}
