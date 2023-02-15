@@ -9,6 +9,12 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "about" => "homes#about"
+    resources :users, only: [:index, :show, :edit, :update] do
+      member do
+        get "confirm_withdraw"
+        patch "withdraw"
+      end
+    end
   end
 
   # 管理者
