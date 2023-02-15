@@ -1,13 +1,17 @@
 <table class="table">
-  <tr><%= image_tag user.get_profile_image(100, 100) %></tr>
-  <tr>
-    <th>名前</th>
-    <th><%= user.name %></th>
-  </tr>
-  <tr>
-    <th>紹介文</th>
-    <th><%= user.introduction %></th>
-  </tr>
+  <%= link_to(user) do %>
+    <tr>
+      <%= image_tag user.get_profile_image(100, 100) %>
+    </tr>
+    <tr>
+      <th>名前</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>紹介文</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  <% end %>
 </table>
 
 <div class="row">

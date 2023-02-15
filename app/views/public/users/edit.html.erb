@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
+    
     <div class="col-12 col-lg-8 mx-auto">
-
       <h2 class="text-center mb-3">プロフィール編集</h2>
       <%= form_with model: @user, url: users_path(@users), method: :patch do |f| %>
 
@@ -33,7 +33,7 @@
               <%= f.label :profile_image, "プロフィール画像", class: "m-lg-0" %>
             </div>
             <div class="col-md-8">
-              <%= f.file_field :profile_image, class: "form-control-file", accept: "image/*" %>
+              <%= f.file_field :profile_image, accept: "image/*", class: "form-control-file" %>
             </div>
           </div>
         </div>
