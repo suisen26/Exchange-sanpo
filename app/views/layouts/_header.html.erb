@@ -20,10 +20,10 @@
         <ul class="navbar-nav ml-auto">
           <% if user_signed_in? %>
             <li>
-              <%= link_to "マイページ", root_path, class: "nav-link text-light btn-rounded mr-2" %>
+              <%= link_to "マイページ", user_path(current_user), class: "nav-link text-light btn-rounded mr-2" %>
             </li>
             <li>
-              <%= link_to "ユーザー一覧", root_path, class: "nav-link text-light btn-rounded mr-2" %>
+              <%= link_to "ユーザー一覧", users_path, class: "nav-link text-light btn-rounded mr-2" %>
             </li>
             <li>
               <%= link_to "写真一覧", root_path, class: "nav-link text-light btn-rounded mr-2" %>
