@@ -9,23 +9,16 @@
     <div class="col-md-8 offset-md-1">
       <h2 class="text-center mb-3">ユーザー一覧</h2>
       <table class="table">
-        <thead>
+        <% @users.each do |user| %>
           <tr>
-            <th>プロフィール画像</th>
-            <th>名前</th>
-            <th colspan="3"></th>
+            <td>
+              <%= image_tag user.get_profile_image(100, 100) %></br>
+              <%= user.name %>
+            </td>
+            <td><%= user.introduction %></td>
+            <td><%= link_to "詳しく", user_path(user.id), class: "btn btn-info" %></td>
           </tr>
-        </thead>
-
-        <tbody>
-          <% @users.each do |user| %>
-            <tr>
-              <td><%= image_tag user.get_profile_image(100, 100) %></td>
-              <td><%= user.name %></td>
-              <td><%= link_to "詳しく", user_path(user.id), class: "btn btn-info" %></td>
-            </tr>
-          <% end %>
-        </tbody>
+        <% end %>
       </table>
     </div>
 
