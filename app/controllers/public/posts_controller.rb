@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   # 他人が投稿の編集と更新、削除ページに遷移できないようにする
-  before_aution :ensure_correct_user, only: [:edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -9,6 +9,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @user = @post
   end
 
   def index
@@ -17,7 +18,7 @@ class Public::PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user.id = current_user.id
+    @post.user_id = current_user.id
     if @post.save
       redirect_to post_path(@post), notice: "投稿の作成に成功しました!"
     else
