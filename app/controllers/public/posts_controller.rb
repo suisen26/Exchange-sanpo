@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to post_path(@post), notice: "投稿の作成に成功しました!"
+      redirect_to post_path(@post), notice: "投稿の作成に成功しました！"
     else
       render :new
     end
@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to post_path(@post), notice: "投稿の更新に成功しました!"
+      redirect_to post_path(@post), notice: "投稿の更新に成功しました！"
     else
       render :edit
     end
