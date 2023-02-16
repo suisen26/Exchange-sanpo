@@ -13,7 +13,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.new
+    @posts = Post.all
   end
 
   def create
@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
     if @post.save
       redirect_to post_path(@post), notice: "投稿の作成に成功しました!"
     else
-      render "new"
+      render :new
     end
   end
 
@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿の更新に成功しました!"
     else
-      render "edit"
+      render :qedit
     end
   end
 
@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :post_image)
+    params.require(:post).permit(:text, :post_image)
   end
 
   def ensure_correct_user
