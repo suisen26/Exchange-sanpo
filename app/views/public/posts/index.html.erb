@@ -1,0 +1,14 @@
+<div class="container px-5 px-sm-0 py-4">
+  <div class="row">
+
+    <div class="col-md-3">
+      <h2 class="text-center mb-3">プロフィール</h2>
+      <%= render "public/users/profile", user: current_user %>
+    </div>
+
+    <div class="col-md8 offset-md-1">
+      <h2 class="text-center mb-3">投稿一覧</h2>
+      <%= render "public/posts/index", posts: @posts %>
+    </div>
+  </div>
+</div>
