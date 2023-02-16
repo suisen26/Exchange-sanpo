@@ -34,7 +34,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "投稿の更新に成功しました!"
     else
-      render :qedit
+      render :edit
     end
   end
 
