@@ -19,7 +19,7 @@ class Public::UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "ユーザーの更新に成功しました!"
     else
-      render "edit"
+      render :edit
     end
   end
 

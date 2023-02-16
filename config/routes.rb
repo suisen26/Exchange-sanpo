@@ -15,7 +15,7 @@ Rails.application.routes.draw do
         patch "withdraw"
       end
     end
-    resources :posts, only: [:new, :index, :show, :edit, :create, :destroy, :update]
+    resources :posts
   end
 
   # 管理者

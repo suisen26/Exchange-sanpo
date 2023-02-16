@@ -17,11 +17,11 @@ class Public::PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to post_path(@post), notice: "投稿の作成に成功しました!"
+      redirect_to root_path, notice: '投稿しました'
     else
+      logger.error @post.errors.full_messages # この行を追加する
       render :new
     end
   end
