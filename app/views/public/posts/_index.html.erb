@@ -1,0 +1,18 @@
+<table class="table">
+  <% posts.each do |post| %>
+    <tr>
+      <td>
+        <%= link_to(post.user) do %>
+          <%= image_tag post.user.get_profile_image(50, 50) %></br>
+          <%= post.user.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to(post.id) do %>
+          <%= post.text %>
+          <%= image_tag post.post_image, post_path(post.id) %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
