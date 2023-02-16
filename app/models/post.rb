@@ -6,4 +6,8 @@ class Post < ApplicationRecord
 
   validates :text, presence: true, length: { maximum: 200 }
 
+  def get_post_image(width, height)
+    post_image.variant(resize_to_limit: [width, height]).processed
+  end
+
 end

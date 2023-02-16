@@ -32,11 +32,15 @@
           </div>
         </div>
 
+        <%= f.label :genre_id, "ジャンル" %>
+        <%#= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "--選択してください--"} %>
+        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+
         <div class="row">
           <div class="col-12 col-md-5 mx-auto py-3">
             <%= f.submit "投稿する", class: "btn btn-success btn-block" %>
           </div>
-        </div>S
+        </div>
       <% end %>
 
     </div>

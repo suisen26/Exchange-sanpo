@@ -8,9 +8,9 @@
         <% end %>
       </td>
       <td>
-        <%= link_to(post.id) do %>
+        <%= link_to(post) do %>
           <%= post.text %>
-          <%= image_tag post.post_image, post_path(post.id) %>
+          <%= image_tag post.get_post_image(200, 200) %>
         <% end %>
       </td>
     </tr>

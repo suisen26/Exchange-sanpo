@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = @post
+    @user = @post.user
   end
 
   def index
@@ -46,7 +46,7 @@ class Public::PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:text, :post_image)
+    params.require(:post).permit(:text, :post_image, :genre_id)
   end
 
   def ensure_correct_user
