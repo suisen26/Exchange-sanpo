@@ -9,7 +9,7 @@ class Public::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @user = @post
+    @user = @post.user
   end
 
   def index
@@ -40,13 +40,13 @@ class Public::PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_path(current_user), notice: "投稿を削除しました"
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:text, :post_image)
+    params.require(:post).permit(:text, :post_image, :genre_id)
   end
 
   def ensure_correct_user
