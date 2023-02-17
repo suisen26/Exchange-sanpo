@@ -33,6 +33,16 @@ body {
   border-radius: 5px;
 }
 
+.card.card-rounded {
+  border: 2px solid grey;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.post_image_rounded {
+  border-radius: 20px;
+}
+
 footer {
   background-color: #BDF09E;
   height: 60px;
