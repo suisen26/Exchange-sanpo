@@ -28,6 +28,14 @@ body {
   font-size: calc(13px + 1vw);
 }
 
+.navbar-nav .nav-link.border {
+  border-width: 0;
+}
+
+.navbar-nav {
+  padding-right: 0;
+}
+
 .btn-rounded {
   border: 1px solid #fff;
   border-radius: 5px;
