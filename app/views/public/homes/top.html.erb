@@ -1,1 +1,30 @@
-aaa
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 col-lg-8 mx-auto">
+      
+      <div class="text-center mb-3">
+        <h2>
+          ようこそ！</br>
+          散歩が好きな人の交流サイトへ！
+        </h2>
+      
+        <p class="py-4">
+          ～さぁ、あなたも散歩中に撮影した風景や空、花、虫、動物などなどの写真を投稿しよう～
+        </p>
+        <p>
+          投稿するには、まずログインまたは新規会員登録をしてね！
+        </p>
+      </div>
+      
+        <div class="col-1c2 col-md-5 mx-auto py-3">
+      <div class="row">
+          <%= link_to "ログイン", new_user_session_path, class: "btn btn-info btn-block mb-3" %>
+      </div>
+      <div class="row">
+        <%= link_to "新規会員登録", new_user_registration_path, class: "btn btn-success btn-block" %>
+      </div>
+        </div>
+        
+    </div>
+  </div>
+</div>
