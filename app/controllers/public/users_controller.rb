@@ -9,7 +9,7 @@ class Public::UsersController < ApplicationController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to user_path(user), notice: 'ゲストユーザーでログインしました!'
+    redirect_to user_path(user), notice: "ゲストユーザーで</br>ログインしました！"
   end
   
   def show
@@ -53,8 +53,8 @@ class Public::UsersController < ApplicationController
   
   def ensure_guest_user
     @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    if @user.name == "ゲストユーザー"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーは</br>プロフィール編集画面へ</br>遷移できません。'
     end
   end
   

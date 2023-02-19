@@ -15,7 +15,7 @@
 </table>
 
 <div class="row">
-  <% if ( user == current_user ) || ( user.name != "guestuser" )  %>
+  <% if ( user == current_user ) || ( user.name != "geustuser" )  %>
     <%= link_to "プロフィール編集", edit_user_path(user.id), class: "btn btn-secondary btn-block" %>
     <%= link_to "投稿する", new_post_path, class: "btn btn-success btn-block" %>
   <% end %>
