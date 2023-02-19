@@ -12,11 +12,16 @@
         <% @users.each do |user| %>
           <tr>
             <td>
-              <%= image_tag user.get_profile_image(100, 100) %></br>
-              <%= user.name %>
+              <%= link_to user_path(user) do %>
+                <%= image_tag user.get_profile_image(100, 100) %></br>
+                <%= user.name %>
+              <% end %>
             </td>
-            <td><%= user.introduction %></td>
-            <td><%= link_to "詳しく", user_path(user.id), class: "btn btn-info" %></td>
+            <td>
+              <%= link_to user_path(user) do %>
+                <%= user.introduction %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </table>
