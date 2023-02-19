@@ -3,19 +3,23 @@
     <div class="col-12 col-lg-8 mx-auto">
       
       <h2 class="text-center mb-3">ユーザー一覧</h2>
-      <% @users.each do |user| %>
-        <%= link_to admin_user_path(user) do %>
-          <div class="row">
-            <div class="col-md-3">
-              <%= image_tag user.get_profile_image(100, 100) %></br>
-              <%= user.name %>
-            </div>
-            <div class="col-md-8">
-              <%= user.introduction %>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
+      <table class="table">
+          <% @users.each do |user| %>
+            <tr>
+              <td>
+                <%= link_to admin_user_path(user) do %>
+                  <%= image_tag user.get_profile_image(100, 100) %></br>
+                  <%= user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to admin_user_path(user) do %>
+                  <%= user.introduction %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
       
     </div>
   </div>
