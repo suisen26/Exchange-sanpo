@@ -1,8 +1,17 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:guest_sign_in, :show, :index]
   # 他人がユーザーの編集と更新ページに遷移できないようにする
   before_action :ensure_correct_user, only: [:edit, :update]
-
+  # ゲストユーザーがユーザー編集ページに遷移できないようにする
+  before_action :ensure_guest_user, only: [:edit]
+  
+   # guestメソッドを使用し、ゲストユーザーをログイン状態にする
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to user_path(user), notice: 'ゲストユーザーでログインしました!'
+  end
+  
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
@@ -41,5 +50,12 @@ class Public::UsersController < ApplicationController
       redirect_to user_path(current_user)
     end
   end
-
+  
+  def ensure_guest_user
+    @user = User.find(params[:id])
+    if @user.name == "guestuser"
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+    end
+  end
+  
 end

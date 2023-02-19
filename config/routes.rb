@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
-  # ユーザー
-  # デバイスは登録とログインのみ
+# ユーザー
+  # デバイスは登録とログイン、ゲストログインのみ
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-    sessions: "public/sessions"
+    sessions: "public/sessions",
   }
 
   scope module: :public do
     root to: "homes#top"
+    post '/users/guest_sign_in', to: 'users#guest_sign_in'
     resources :users, only: [:index, :show, :edit, :update] do
       member do
         get "confirm_withdraw"
@@ -17,7 +18,7 @@ Rails.application.routes.draw do
     resources :posts
   end
 
-  # 管理者
+# 管理者
   # デバイスはログインのみ
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
