@@ -2,6 +2,24 @@
   <div class="row">
 
     <div class="col-12 col-lg-8 mx-auto">
+      <% if @user.errors.any? %>
+        <div class="row d-flex align-self-center justify-content-center">
+          <div class="alert alert-secondary mt-1 py-0">
+            <h5 class="text-center">
+              <%= @user.errors.count %>件のエラーが発生しました。
+            </h5>
+            
+            <div class="row d-flex align-self-center justify-content-center">
+              <ul>
+                <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      
       <h2 class="text-center mb-3">プロフィール編集</h2>
       <%= form_with model: @user, url: user_path(@user), method: :patch do |f| %>
 
