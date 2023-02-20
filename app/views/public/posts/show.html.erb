@@ -6,27 +6,43 @@
       <%= render "public/users/profile", user: @user %>
     </div>
 
-    <div class="col-md-8 offset-md-1">
+    <div class="col-md-8 offset-md-1 mb-3">
       <h2 class="text-center mb-3">投稿詳細</h2>
-      <table class="table">
+      
+      <div class="row mb-3">
+        <div class="col-md-3 d-flex justify-content-center align-self-center">
+          文章
+        </div>
+        <div class="col-md-9">
+          <%= @post.text %>
+        </div>
+      </div>
+      
+      <div class="row mb-3">
+        <div class="col-md-3 d-flex justify-content-center align-self-center">
+          投稿画像
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-self-center">
+          <%= image_tag @post.get_post_image(300, 225) %>
+        </div>
+      </div>
+      
+      <div class="row mb-3">
+        <div class="col-md-6">
+          ジャンル名: <%= @post.genre.name %>
+        </div>
+      </div>
 
-        <tr>
-          <td>文章</td>
-          <td><%= @post.text %></td>
-        </tr>
-
-        <tr>
-          <td>投稿画像</td>
-          <td><%= image_tag @post.get_post_image(200, 200) %></td>
-        </tr>
-
-        <tr>
-          <% if @post.user == current_user %>
-            <td><%= link_to "編集する", edit_post_path(@post), class: "btn btn-primary btn-block" %></td>
-            <td><%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger btn-block" %></td>
-          <% end %>
-        </tr>
-      </table>
+      <% if @post.user == current_user %>
+        <div class="row justify-content-center">
+          <div class="col-md-4">
+            <%= link_to "編集する", edit_post_path(@post), class: "btn btn-primary btn-block" %>
+          </div>
+          <div class="col-md-4">
+            <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger btn-block" %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   </div>
