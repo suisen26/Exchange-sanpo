@@ -7,7 +7,7 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to request.referer
+      redirect_to request.referer, notice: "ジャンルの作成に成功しました！"
     else
       @genres = Genre.all
       render :index
@@ -30,7 +30,7 @@ class Admin::GenresController < ApplicationController
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy
-    redirect_to admin_genres_path, notice: "ジャンルを削除しました！"
+    redirect_to admin_genres_path, notice: "ジャンルを削除しました。"
   end
 
   private
