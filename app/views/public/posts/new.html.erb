@@ -1,4 +1,4 @@
-<div class="container px-5 px-sm-0 py-4">
+<div class="container py-4">
   <div class="row">
 
     <div class="col-md-3">
@@ -7,9 +7,26 @@
     </div>
 
     <div class="col-md-8 offset-md-1">
+      <% if @post.errors.any? %>
+        <div class="row d-flex align-self-center justify-content-center">
+          <div class="alert alert-secondary mt-1 py-0">
+            <h5 class="text-center">
+              <%= @post.errors.count %>件のエラーが発生しました。
+            </h5>
+            
+            <div class="row d-flex align-self-center justify-content-center">
+              <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    
       <h2 class="text-center mb-3">新規投稿画面</h2>
       <%= form_with model: @post, url: posts_path(@post), method: :post do |f| %>
-
         <div class="form-group text-center">
           <div class="row justify-content-center">
             <div class="col-md-8 mb-3">
@@ -27,14 +44,21 @@
               <%= f.label :post_image, "投稿する画像を選んでね！", class: "m-lg-0" %>
             </div>
             <div class="col-md-8 mb-3">
-              <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
+              <div class="row justify-content-center">
+                <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
+              </div>
             </div>
           </div>
         </div>
-
-        <%= f.label :genre_id, "ジャンル" %>
-        <%#= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: "--選択してください--"} %>
-        <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: '選択してください'}, { class: 'form-control' , required: true } %>
+        
+        <div class="form-group text-center">
+          <div class="row justify-content-center">
+            <div class="col-md-8 mb-3">
+              <%= f.label :genre_id, "ジャンル名" %>
+              <%= f.select :genre_id, options_from_collection_for_select(Genre.all, :id, :name), { include_blank: '選択してください'}, { class: 'form-control'} %>
+            </div>
+          </div>
+        </div>
 
         <div class="row">
           <div class="col-12 col-md-5 mx-auto py-3">
