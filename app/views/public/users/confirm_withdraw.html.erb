@@ -1,0 +1,24 @@
+<div class="container py-4">
+  <div class="row">
+    <div class="col-12 col-lg-8 mx-auto">
+      
+      <div class="text-center mb-3">
+        <h2>退会確認画面</h2>
+        <h1>本当に退会しますか？</h1>
+        <p class="py-4">
+          退会すると、会員登録情報や<br>
+          これまでの投稿が削除されます。<br>
+          退会する場合は、「退会する」をクリックしてください。
+        </p>
+      </div>
+      
+      <div class="row">
+        <div class="col-12 col-md-5 mx-auto py-3">
+          <%= link_to "退会しない", user_path(current_user), class: "btn btn-primary btn-block mb-3" %>
+          <%= link_to "退会する", withdraw_users_path(email: @user.email), method: :patch, class: "btn btn-danger btn-block" %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>

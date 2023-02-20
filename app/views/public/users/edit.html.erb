@@ -59,9 +59,9 @@
         <div class="row">
           <div class="col-12 col-md-5 mx-auto py-3">
             <%= f.submit "編集を保存する", class: "btn btn-success btn-block" %>
+            <%= link_to "退会する", confirm_withdraw_users_path(current_user), class: "btn btn-danger btn-block" %>
           </div>
         </div>
-
       <% end %>
 
     </div>
