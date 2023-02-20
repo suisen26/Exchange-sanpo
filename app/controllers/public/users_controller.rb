@@ -38,9 +38,9 @@ class Public::UsersController < ApplicationController
 
   def withdraw
     @user = User.find_by(email: params[:email])
-    @user.update(status: true)
+    @user.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "退会に成功しました。"
   end
 
   private
@@ -59,7 +59,7 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲストユーザー"
-      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to user_path(current_user) , notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
     end
   end
   

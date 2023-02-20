@@ -15,7 +15,7 @@
       <div class="row">
         <div class="col-12 col-md-5 mx-auto py-3">
           <%= link_to "退会しない", user_path(current_user), class: "btn btn-primary btn-block mb-3" %>
-          <%= link_to "退会する", withdraw_users_path(email: @user.email), method: :patch, class: "btn btn-danger btn-block" %>
+          <%= link_to "退会する", withdraw_user_path(email: @user.email), method: :patch, class: "btn btn-danger btn-block" %>
         </div>
       </div>
       

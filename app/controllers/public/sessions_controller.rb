@@ -47,7 +47,7 @@ class Public::SessionsController < Devise::SessionsController
     # 【処理内容2】取得したアカウントのパスワードと入力されたパスワードが一致しているかを判別
     if @user.valid_password?(params[:user][:password]) && @user.is_deleted
       # 【処理内容3】falseの場合、サインインページにリダイレクトする
-      redirect_to new_user_session_path
+      redirect_to new_user_session_path, notice: "このユーザーは退会済みです。</br>下記のリンクから、再度会員登録をお願い致します。"
     end
   end
   
