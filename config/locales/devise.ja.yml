@@ -26,6 +26,11 @@ ja: # 日本語の設定を行う
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      post: # Postモデルの属性の設定を行う
+        text: 文章
+        post_image: 写真
+      genre: 
+        name: ジャンル
     models:
       user: ユーザー
   devise:
