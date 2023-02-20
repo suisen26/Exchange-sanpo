@@ -27,9 +27,7 @@
               <%= f.label :post_image, "投稿する写真を選んでね！", class: "m-lg-0" %>
             </div>
             <div class="col-md-8 mb-3">
-              <div class="row justify-content-center">
-                <%= f.file_field :post_image, accept: "image/*", class: "form-control-file" %>
-              </div>
+              <%= f.file_field :post_image, accept: "image/*", autofocus: true, class: "form-control-file" %>
             </div>
           </div>
         </div>
