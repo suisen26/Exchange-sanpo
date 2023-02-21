@@ -24,7 +24,7 @@
           <div class="mb-2">投稿日: <%= @post.created_at.strftime("%Y/%m/%d") %></div>
           <div class="mb-2">ジャンル名: <%= @post.genre.name %></div>
           <div class="mb-2">コメント件数: <%= @post.post_comments.count %></div>
-          <div><%= render "public/favorites/favorite", post: @post %></div>
+          <div class="mb-2"><%= render "public/favorites/favorite", post: @post %></div>
           <% if @post.user == current_user %>
             <div class="row">
               <div class="col-md-4 mb-2">
