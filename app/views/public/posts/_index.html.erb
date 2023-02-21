@@ -4,8 +4,8 @@
       <%= link_to post_path(post) do %>
         <%= image_tag post.get_post_image(300, 200), class: "post_image_rounded" %></br>
         <%= post.text.truncate(50) %></br>
-        ジャンル名: <%= post.genre.name %></br>
         投稿日: <%= post.created_at.strftime("%Y/%m/%d") %></br>
+        ジャンル名: <%= post.genre.name %></br>
       <% end %>
       
       <div>
