@@ -1,9 +1,9 @@
 class Post < ApplicationRecord
-  # ActiveStorageで投稿画像を保存する
-  has_one_attached :post_image
-  
   belongs_to :user
   belongs_to :genre, optional: true
+  has_many :post_comments, dependent: :destroy
+  # ActiveStorageで投稿画像を保存する
+  has_one_attached :post_image
 
   validates :text, presence: true, length: { maximum: 200 }
   validates :post_image, presence: true
