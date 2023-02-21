@@ -10,40 +10,46 @@
       <h2 class="text-center mb-3">投稿詳細</h2>
       
       <div class="row mb-3">
-        <div class="col-md-3 d-flex justify-content-center align-self-center">
-          文章
-        </div>
-        <div class="col-md-9">
+        <div class="col-12">
           <%= @post.text %>
         </div>
       </div>
       
       <div class="row mb-3">
-        <div class="col-md-3 d-flex justify-content-center align-self-center">
-          投稿画像
-        </div>
         <div class="col-md-6 d-flex justify-content-center align-self-center">
           <%= image_tag @post.get_post_image(300, 225) %>
         </div>
+        
+        <div class="col-md-6">
+          <div class="mb-2">ジャンル名: <%= @post.genre.name %></div>
+          <div class="mb-2">コメント件数: <%= @post.post_comments.count %></div>
+          <% if @post.user == current_user %>
+            <div class="row">
+              <div class="col-md-4 mb-2">
+                <%= link_to "編集する", edit_post_path(@post), class: "btn btn-primary btn-block" %>
+              </div>
+              <div class="col-md-4 mb-2">
+                <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger btn-block" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
       
-      <div class="row mb-3">
-        <div class="col-md-6">
-          ジャンル名: <%= @post.genre.name %>
-        </div>
+      <div>
+        <% @post.post_comments.each do |post_comment| %>
+          <p><%= image_tag post_comment.user.get_profile_image(50,50) %></p>
+          <%= post_comment.user.name %>
+          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+        <% end %>
       </div>
-
-      <% if @post.user == current_user %>
-        <div class="row justify-content-center">
-          <div class="col-md-4">
-            <%= link_to "編集する", edit_post_path(@post), class: "btn btn-primary btn-block" %>
-          </div>
-          <div class="col-md-4">
-            <%= link_to "削除する", post_path(@post), method: :delete, class: "btn btn-danger btn-block" %>
-          </div>
-        </div>
-      <% end %>
+      <div>
+        <%= form_with model: [@post, @post_comment] do |f| %>
+          <%= f.text_area :comment, cols: "50", rows: "5", placeholder: "コメントをここに記述してください" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
     </div>
-
+    
   </div>
 </div>

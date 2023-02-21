@@ -19,21 +19,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=M+PLUS+Rounded+1c&family=Raleway&display=swap');
 
-body {
-  font-family: 'Raleway', 'M PLUS Rounded 1c', sans-serif !important;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .logo {
   font-family: 'Hachi Maru Pop', cursive;
   font-size: calc(13px + 1vw);
-}
-
-.navbar-nav .nav-link.border {
-  border-width: 0;
-}
-
-.navbar-nav {
-  padding-right: 0;
 }
 
 .btn-rounded {
@@ -51,9 +45,23 @@ body {
   border-radius: 20px;
 }
 
-footer {
+body {
+  font-family: 'Raleway', 'M PLUS Rounded 1c', sans-serif !important;
+  position: relative;/*←相対位置*/
+  padding-bottom: 120px;/*←footerの高さ*/
+}
+
+header {
+  background-color: #77A35B;
+}
+
+footer{
   background-color: #BDF09E;
-  height: 60px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  position: absolute; /*←絶対位置*/
+  bottom: 0; /*下に固定*/
 }
 
 @media screen and (max-width: 1199.98px) {}
