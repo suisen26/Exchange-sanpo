@@ -8,6 +8,10 @@ class Post < ApplicationRecord
   validates :text, presence: true, length: { maximum: 200 }
   validates :post_image, presence: true
   validates :genre_id, presence: true
+  
+  # def get_post_image
+  #   (post_image.attached?) ? post_image : 'no_image.jpg'
+  # end
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed

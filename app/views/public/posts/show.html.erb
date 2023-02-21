@@ -17,7 +17,7 @@
       
       <div class="row mb-3">
         <div class="col-md-6 d-flex justify-content-center align-self-center">
-          <%= image_tag @post.get_post_image(300, 225) %>
+          <%= image_tag @post.get_post_image(300, 200) %>
         </div>
         
         <div class="col-md-6">
@@ -39,14 +39,14 @@
       <div class="row mb-3">
         <% @post.post_comments.each do |post_comment| %>
           <div class="col-md-1 align-self-center">
-            <%#= link_to post_comment.user_path(post_comment.user) do %>
-              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle mb-2" %></br>
-              <%= post_comment.user.name %></br>
-            <%# end %>
+            <%= link_to user_path(post_comment.user) do %>
+              <%= image_tag post_comment.user.get_profile_image(50, 50), class: "rounded-circle mb-2" %></br>
+            <% end %>
           </div>
           <div class="col-md-9">
             <%= post_comment.comment %></br>
             <div class="text-right">投稿日: <%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+            <div class="text-right"><%= link_to post_comment.user.name, user_path(post_comment.user) %></div>
           </div>
           <div class="col-md-2 d-flex align-self-center">
             <% if post_comment.user == current_user %>
@@ -56,7 +56,7 @@
         <% end %>
       </div>
       
-      <div class="row">
+      <div class="row mb-3">
         <%= form_with model: [@post, @post_comment] do |f| %>
           <%= f.text_area :comment, cols: "50", rows: "5", placeholder: "コメントをここに記述してください" %></br>
           <%= f.submit "送信する" %>

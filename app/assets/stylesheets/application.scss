@@ -47,8 +47,6 @@
 
 body {
   font-family: 'Raleway', 'M PLUS Rounded 1c', sans-serif !important;
-  position: relative;/*←相対位置*/
-  padding-bottom: 120px;/*←footerの高さ*/
 }
 
 header {
@@ -60,8 +58,6 @@ footer{
   width: 100%;
   text-align: center;
   padding: 10px;
-  position: absolute; /*←絶対位置*/
-  bottom: 0; /*下に固定*/
 }
 
 @media screen and (max-width: 1199.98px) {}
