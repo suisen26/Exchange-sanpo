@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :genre, optional: true
   has_many :post_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   # ActiveStorageで投稿画像を保存する
   has_one_attached :post_image
 
@@ -15,6 +16,10 @@ class Post < ApplicationRecord
 
   def get_post_image(width, height)
     post_image.variant(resize_to_limit: [width, height]).processed
+  end
+  
+  def favorited_by?(user)
+    favorites.exists?(user_id: user.id)
   end
 
 end
