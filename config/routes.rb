@@ -31,7 +31,9 @@ Rails.application.routes.draw do
     get "" => "posts#index"
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :destroy]
-    resources :posts, only: [:index, :show, :destroy]
+    resources :posts, only: [:index, :show, :destroy] do
+      resources :post_comments, only: [:destroy]
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
