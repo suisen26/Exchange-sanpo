@@ -36,16 +36,29 @@
         </div>
       </div>
       
-      <div>
+      <div class="row mb-3">
         <% @post.post_comments.each do |post_comment| %>
-          <p><%= image_tag post_comment.user.get_profile_image(50,50) %></p>
-          <%= post_comment.user.name %>
-          <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+          <div class="col-md-1 align-self-center">
+            <%#= link_to post_comment.user_path(post_comment.user) do %>
+              <%= image_tag post_comment.user.get_profile_image(50,50), class: "rounded-circle mb-2" %></br>
+              <%= post_comment.user.name %></br>
+            <%# end %>
+          </div>
+          <div class="col-md-9">
+            <%= post_comment.comment %></br>
+            <div class="text-right">投稿日: <%= post_comment.created_at.strftime('%Y/%m/%d') %></div>
+          </div>
+          <div class="col-md-2 d-flex align-self-center">
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除する", post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-block" %>
+            <% end %>
+          </div>
         <% end %>
       </div>
-      <div>
+      
+      <div class="row">
         <%= form_with model: [@post, @post_comment] do |f| %>
-          <%= f.text_area :comment, cols: "50", rows: "5", placeholder: "コメントをここに記述してください" %>
+          <%= f.text_area :comment, cols: "50", rows: "5", placeholder: "コメントをここに記述してください" %></br>
           <%= f.submit "送信する" %>
         <% end %>
       </div>
