@@ -5,10 +5,14 @@
         <%= image_tag post.get_post_image(300, 200), class: "post_image_rounded" %></br>
         <%= post.text.truncate(50) %></br>
         ジャンル名: <%= post.genre.name %></br>
-        コメント件数: <%= post.post_comments.count %></br>
         投稿日: <%= post.created_at.strftime("%Y/%m/%d") %></br>
       <% end %>
-  
+      
+      <div>
+        <span class="mr-2">コメント件数: <%= post.post_comments.count %></span>
+        <%= render "public/favorites/favorite", post: post %>
+      </div>
+      
       <%= link_to user_path(post.user) do %>
         <%= image_tag post.user.get_profile_image(50, 50), class: "rounded-circle float-left mr-2" %>
         <div class="d-flex align-self-center"><%= post.user.name %></div>
