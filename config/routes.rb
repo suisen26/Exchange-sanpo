@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 # ユーザー
-  # デバイスは登録とログイン、ゲストログインのみ
+  # デバイスは登録とログインのみ
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions",
@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
+    get "" => "posts#index"
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :destroy]
     resources :posts, only: [:index, :show, :destroy]
