@@ -8,14 +8,16 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: "homes#top"
-    post '/users/guest_sign_in', to: 'users#guest_sign_in'
+    post "users/guest_sign_in", to: "users#guest_sign_in"
     resources :users, only: [:index, :show, :edit, :update] do
       member do
         get "confirm_withdraw"
         patch "withdraw"
       end
     end
-    resources :posts
+    resources :posts do
+      resources :post_comments, only: [:create, :destroy]
+    end
   end
 
 # 管理者
