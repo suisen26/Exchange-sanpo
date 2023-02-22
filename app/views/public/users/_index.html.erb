@@ -12,6 +12,16 @@
           <%= user.introduction %>
         <% end %>
       </td>
+      <% if user.name != "ゲストユーザー" %>
+        <tr>
+          <th>フォロー</th>
+          <th><%= link_to user.followings.count, user_followings_path(user) %></th>
+        </tr>
+        <tr>
+          <th>フォロワー</th>
+          <th><%= link_to user.followers.count, user_followers_path(user) %></th>
+        </tr>
+      <% end %>
       <td>
         <!--表示されているユーザーが現在のユーザー自身でない場合-->
         <% if current_user != user %>
