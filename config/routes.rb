@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
       resources :post_comments, only: [:create, :destroy]
     end
+    get "search", to: "searches#search"
   end
 
 # 管理者
