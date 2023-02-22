@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :destroy] do
       resources :post_comments, only: [:destroy]
     end
+    get "search", to: "searches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
