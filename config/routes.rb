@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     post "users/guest_sign_in", to: "users#guest_sign_in"
     resources :users, only: [:index, :show, :edit, :update] do
       member do
+        get "favorites"
         get "confirm_withdraw"
         patch "withdraw"
       end
