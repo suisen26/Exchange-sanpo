@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-# ユーザー
+# ユーザー側のルーティング
   # デバイスは登録とログインのみ
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
@@ -15,8 +15,8 @@ Rails.application.routes.draw do
         patch "withdraw"
       end
       resource :relationships, only: [:create, :destroy]
-      get "followings" => "relationships#followings", as: "followings"
-      get "followers" => "relationships#followers", as: "followers"
+      get "followings", to: "relationships#followings", as: "followings"
+      get "followers", to: "relationships#followers", as: "followers"
     end
     resources :posts do
       resource :favorites, only: [:create, :destroy]
@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     get "search", to: "searches#search"
   end
 
-# 管理者
+# 管理者側のルーティング
   # デバイスはログインのみ
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
