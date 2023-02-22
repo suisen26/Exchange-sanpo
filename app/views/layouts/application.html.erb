@@ -28,7 +28,11 @@
     
     <!--検索機能-->
     <div class="d-flex justify-content-center mb-2">
-      <%= render "public/searches/form" %>
+      <% if admin_signed_in? %>
+        <%= render "admin/searches/form" %>
+      <% else %>
+        <%= render "public/searches/form" %>
+      <% end %>
     </div>
     
     <%= yield %>
