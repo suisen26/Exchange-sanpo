@@ -12,16 +12,12 @@
           <%= user.introduction %>
         <% end %>
       </td>
-      <% if user.name != "ゲストユーザー" %>
-        <tr>
-          <th>フォロー</th>
-          <th><%= link_to user.followings.count, admin_user_followings_path(user) %></th>
-        </tr>
-        <tr>
-          <th>フォロワー</th>
-          <th><%= link_to user.followers.count, admin_user_followers_path(user) %></th>
-        </tr>
-      <% end %>
+      <td>
+        <% if user.name != "ゲストユーザー" %>
+          フォロー数: <%= link_to user.followings.count, admin_user_followings_path(user) %>
+          フォロワー数: <%= link_to user.followers.count, admin_user_followers_path(user) %>
+        <% end %>
+      </td>
     </tr>
     
   <% end %>
