@@ -11,5 +11,15 @@
       <th>紹介文</th>
       <th><%= user.introduction %></th>
     </tr>
+    <% if user.name != "ゲストユーザー" %>
+      <tr>
+        <th>フォロー</th>
+        <th><%= link_to user.followings.count, admin_user_followings_path(user) %></th>
+      </tr>
+      <tr>
+        <th>フォロワー</th>
+        <th><%= link_to user.followers.count, admin_user_followers_path(user) %></th>
+      </tr>
+    <% end %>
   <% end %>
 </table>
