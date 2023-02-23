@@ -26,4 +26,7 @@
       </tr>
     <% end %>
   <% end %>
+  <tr>
+    <th><%= link_to "退会させる", confirm_withdraw_admin_user_path(id: user.id), class: "btn btn-danger btn-block" %></th>
+  </tr>
 </table>

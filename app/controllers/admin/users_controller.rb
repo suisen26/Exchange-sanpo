@@ -10,12 +10,16 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
-  # def edit
-  # end
+  def confirm_withdraw
+    @user = User.find(params[:id])
+  end
 
-  # def update
-  #   @customer.update(customer_params) ? (redirect_to admin_customer_path(@customer)) : (render :edit)
-  # end
+  def withdraw
+    @user = User.find_by(email: params[:email])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to admin_users_path, notice: "退会させました。"
+  end
   
   def favorites
     @user = User.find(params[:id])
@@ -26,7 +30,7 @@ class Admin::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image)
+    params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)
   end
 
 end

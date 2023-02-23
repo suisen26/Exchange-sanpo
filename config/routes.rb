@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :destroy] do
       member do
         get "favorites"
+        get "confirm_withdraw"
+        patch "withdraw"
       end
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
