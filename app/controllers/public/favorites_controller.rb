@@ -4,7 +4,7 @@ class Public::FavoritesController < ApplicationController
     post = Post.find(params[:post_id])
     favorite = current_user.favorites.new(post_id: post.id)
     favorite.save
-    redirect_to request.referer, notice; "いいねしました！"
+    redirect_to request.referer, notice: "いいねしました！"
   end
   
   def destroy

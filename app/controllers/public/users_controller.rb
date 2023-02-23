@@ -37,8 +37,8 @@ class Public::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find_by(email: params[:email])
-    @user.update(is_deleted: true)
+    user = User.find_by(email: params[:email])
+    user.update(is_deleted: true)
     reset_session
     redirect_to root_path, notice: "退会に成功しました。"
   end

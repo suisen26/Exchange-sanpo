@@ -15,9 +15,8 @@ class Admin::UsersController < ApplicationController
   end
 
   def withdraw
-    @user = User.find_by(email: params[:email])
-    @user.update(is_deleted: true)
-    reset_session
+    user = User.find_by(email: params[:email])
+    user.update(is_deleted: true)
     redirect_to admin_users_path, notice: "退会させました。"
   end
   
@@ -27,10 +26,4 @@ class Admin::UsersController < ApplicationController
     @favorite_posts = Post.find(favorites)
   end
   
-  private
-
-  def user_params
-    params.require(:user).permit(:name, :introduction, :profile_image, :is_deleted)
-  end
-
 end
