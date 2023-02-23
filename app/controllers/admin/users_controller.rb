@@ -16,7 +16,13 @@ class Admin::UsersController < ApplicationController
   # def update
   #   @customer.update(customer_params) ? (redirect_to admin_customer_path(@customer)) : (render :edit)
   # end
-
+  
+  def favorites
+    @user = User.find(params[:id])
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @favorite_posts = Post.find(favorites)
+  end
+  
   private
 
   def user_params

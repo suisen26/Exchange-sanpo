@@ -35,7 +35,10 @@ Rails.application.routes.draw do
   namespace :admin do
     get "" => "posts#index"
     resources :genres, only: [:index, :create, :edit, :update, :destroy]
-    resources :users, only: [:index, :show, :destroy] do 
+    resources :users, only: [:index, :show, :destroy] do
+      member do
+        get "favorites"
+      end
       get "followings", to: "relationships#followings", as: "followings"
       get "followers", to: "relationships#followers", as: "followers"
     end
