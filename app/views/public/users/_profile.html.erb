@@ -29,14 +29,17 @@
 </table>
 
 <div class="row">
-  <!--表示されているユーザーが現在のユーザー自身でない場合-->
-  <% if current_user != user %>
-    <!--現在のユーザーと表示されているユーザーがともにゲストユーザーでない場合-->
-    <% if current_user.name != "ゲストユーザー" && user.name != "ゲストユーザー" %>
-      <% if current_user.following?(user) %>
-        <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info" %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+  <!-- ユーザーがログインしている場合 -->
+  <% if current_user %>
+    <!--表示されているユーザーが現在のユーザー自身でない場合-->
+    <% if current_user != user %>
+      <!--現在のユーザーと表示されているユーザーがともにゲストユーザーでない場合-->
+      <% if current_user.name != "ゲストユーザー" && user.name != "ゲストユーザー" %>
+        <% if current_user.following?(user) %>
+          <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
+        <% end %>
       <% end %>
     <% end %>
   <% end %>

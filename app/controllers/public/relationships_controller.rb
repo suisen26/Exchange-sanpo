@@ -1,5 +1,5 @@
 class Public::RelationshipsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:followings, :followers]
   
   # フォローする時
   def create

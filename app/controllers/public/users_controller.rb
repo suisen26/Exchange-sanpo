@@ -1,5 +1,5 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:guest_sign_in, :show, :index]
+  before_action :authenticate_user!, except: [:guest_sign_in, :show, :index, :favorites]
   # 他人がユーザーの編集と更新ページに遷移できないようにする
   before_action :ensure_correct_user, only: [:edit, :update]
   # ゲストユーザーがユーザー編集ページに遷移できないようにする

@@ -1,5 +1,5 @@
 <h2>いいね一覧</h2>
-<% if @favorite_posts.present? %>
+<% if @favorite_posts.exists? %>
   <%= render "public/posts/index", posts: @favorite_posts %>
 <% else %>
   <p>いいねはまだしてないです。</p>

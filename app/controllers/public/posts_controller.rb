@@ -27,7 +27,6 @@ class Public::PostsController < ApplicationController
     end
   end
 
-
   def edit
   end
 
