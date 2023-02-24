@@ -65,8 +65,17 @@ footer{
   margin: 0 auto;
 }
 
+table {
+  width: 100%;
+}
+
 td {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid #CCCCCC;
+  text-align: center;
+}
+
+.td-border-none {
+  border-bottom: none;
 }
 
 .td-last {
@@ -86,11 +95,10 @@ td {
   }
   
   .td-last {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid #CCCCCC;
     width: 100%;
   }
 
 }
 @media screen and (max-width: 767.98px) {}
 @media screen and (max-width: 575.98px) {}
-

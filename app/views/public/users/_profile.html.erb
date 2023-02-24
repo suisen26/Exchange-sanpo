@@ -1,53 +1,56 @@
-<table class="table">
+<table class="table-hover table-sm">
   <%= link_to user_path(user) do %>
     <tr>
-      <%= image_tag user.get_profile_image(100, 100) %>
+      <td><%= image_tag user.get_profile_image(100, 100) %></td>
     </tr>
     <tr>
-      <th>名前</th>
-      <th><%= user.name %></th>
+      <td>名前: <%= user.name %></td>
     </tr>
     <tr>
-      <th>紹介文</th>
-      <th><%= user.introduction %></th>
+      <td>紹介文</br><%= user.introduction %></td>
     </tr>
     <tr>
-      <th>いいね一覧</th>
-      <th><%= link_to user.favorites.count, favorites_user_path(user) %></th>
+      <td>いいね一覧: <%= link_to user.favorites.count, favorites_user_path(user) %></th>
     </tr>
     <% if user.name != "ゲストユーザー" %>
       <tr>
-        <th>フォロー</th>
-        <th><%= link_to user.followings.count, user_followings_path(user) %></th>
+        <td>フォロー: <%= link_to user.followings.count, user_followings_path(user) %></td>
       </tr>
       <tr>
-        <th>フォロワー</th>
-        <th><%= link_to user.followers.count, user_followers_path(user) %></th>
+        <td>フォロワー: <%= link_to user.followers.count, user_followers_path(user) %></td>
       </tr>
     <% end %>
   <% end %>
-</table>
-
-<div class="row">
+ 
   <!-- ユーザーがログインしている場合 -->
   <% if current_user %>
     <!--表示されているユーザーが現在のユーザー自身でない場合-->
     <% if current_user != user %>
       <!--現在のユーザーと表示されているユーザーがともにゲストユーザーでない場合-->
       <% if current_user.name != "ゲストユーザー" && user.name != "ゲストユーザー" %>
-        <% if current_user.following?(user) %>
-          <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info" %>
-        <% else %>
-          <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %>
-        <% end %>
+        <tr>
+          <% if current_user.following?(user) %>
+            <td class="td-border-none"><%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-info" %></td>
+          <% else %>
+            <td class="td-border-none"><%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-success" %></td>
+          <% end %>
+        </tr>
       <% end %>
     <% end %>
   <% end %>
   
   <% if user == current_user %>
     <% if user.name != "ゲストユーザー" %>
-      <%= link_to "プロフィール編集", edit_user_path(user.id), class: "btn btn-secondary btn-block" %>
+      <tr>
+        <td class="td-border-none">
+          <%= link_to "プロフィール編集", edit_user_path(user.id), class: "btn btn-secondary" %>
+        </td>
+      </tr>
     <% end %>
-    <%= link_to "投稿する", new_post_path, class: "btn btn-success btn-block" %>
+    <tr>
+      <td class="td-border-none">
+        <%= link_to "投稿する", new_post_path, class: "btn btn-success" %>
+      </td>
+    </tr>
   <% end %>
-</div>
+</table>
