@@ -65,6 +65,12 @@ footer{
   margin: 0 auto;
 }
 
+.font-size {
+  font-size: 13px;
+}
+
+
+
 @media screen and (max-width: 1199.98px) {}
 @media screen and (max-width: 991.98px) {
   .btn-rounded {
@@ -74,3 +80,7 @@ footer{
 }
 @media screen and (max-width: 767.98px) {}
 @media screen and (max-width: 575.98px) {}
+
+.follow-width {
+  width: 20%;
+}
