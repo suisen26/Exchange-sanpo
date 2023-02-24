@@ -1,4 +1,4 @@
-<table class="table table-hover table-sm">
+<table class="table-hover table-sm">
   <% users.each do |user| %>
     <tr>
       <td>
@@ -14,7 +14,7 @@
         <% end %>
       </td>
     
-      <td class="follow-width">
+      <td class="td-last">
         <% if user.name != "ゲストユーザー" %>
           フォロー: <%= link_to user.followings.count, user_followings_path(user) %></br>
           フォロワー: <%= link_to user.followers.count, user_followers_path(user) %></br>
