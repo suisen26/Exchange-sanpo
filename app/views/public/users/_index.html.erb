@@ -8,9 +8,9 @@
       <% end %>
     </td>
     
-    <td class="text-break font-size">
+    <td class="text-break">
       <%= link_to user_path(user) do %>
-        <%= user.introduction %>
+        <%= user.introduction.truncate(100) %>
       <% end %>
     </td>
     
