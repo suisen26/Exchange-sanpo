@@ -2,7 +2,7 @@
   <% posts.each do |post| %>
     <div class="col-10 col-md-6 col-lg-4 card card-rounded mx-auto">
       <%= link_to admin_post_path(post) do %>
-        <%= image_tag post.get_post_image(300, 200), class: "post_image_rounded" %></br>
+        <%= image_tag post.get_post_image, size: "220x165", class: "post_image_rounded" %></br>
         <%= post.text.truncate(50) %></br>
         投稿日:<%= post.created_at.strftime("%Y/%m/%d") %></br>
         ジャンル名: <%= post.genre.name %></br>
