@@ -1,32 +1,27 @@
 <table class="table">
   <%= link_to admin_user_path(user) do %>
     <tr>
-      <%= image_tag user.get_profile_image(100, 100) %>
+      <td><%= image_tag user.get_profile_image(100, 100) %></td>
     </tr>
     <tr>
-      <th>名前</th>
-      <th><%= user.name %></th>
+      <td>名前: <%= user.name %></td>
     </tr>
     <tr>
-      <th>紹介文</th>
-      <th><%= user.introduction %></th>
+      <td>紹介文</br><%= user.introduction %></td>
     </tr>
     <tr>
-      <th>いいね一覧</th>
-      <th><%= link_to user.favorites.count, favorites_admin_user_path(user) %></th>
+      <td>いいね一覧: <%= link_to user.favorites.count, favorites_admin_user_path(user) %></td>
     </tr>
     <% if user.name != "ゲストユーザー" %>
       <tr>
-        <th>フォロー</th>
-        <th><%= link_to user.followings.count, admin_user_followings_path(user) %></th>
+        <td>フォロー: <%= link_to user.followings.count, admin_user_followings_path(user) %></td>
       </tr>
       <tr>
-        <th>フォロワー</th>
-        <th><%= link_to user.followers.count, admin_user_followers_path(user) %></th>
+        <td>フォロワー: <%= link_to user.followers.count, admin_user_followers_path(user) %></td>
       </tr>
     <% end %>
   <% end %>
   <tr>
-    <th><%= link_to "退会させる", confirm_withdraw_admin_user_path(id: user.id), class: "btn btn-danger btn-block" %></th>
+    <td class="td-border-none"><%= link_to "退会させる", confirm_withdraw_admin_user_path(id: user.id), class: "btn btn-danger" %></td>
   </tr>
 </table>

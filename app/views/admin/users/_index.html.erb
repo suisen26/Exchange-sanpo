@@ -1,4 +1,4 @@
-<table class="table">
+<table class="table-hover table-sm">
   <% users.each do |user| %>
     <tr>
       <td>
@@ -7,26 +7,26 @@
           <%= user.name %>
         <% end %>
       </td>
-      <td>
+      
+      <td class="text-break">
         <%= link_to admin_user_path(user) do %>
           <%= user.introduction %>
         <% end %>
       </td>
-      <td>
+      
+      <td class="td-last">
         <% if user.name != "ゲストユーザー" %>
-          フォロー数: <%= link_to user.followings.count, admin_user_followings_path(user) %>
-          フォロワー数: <%= link_to user.followers.count, admin_user_followers_path(user) %>
+          フォロー: <%= link_to user.followings.count, admin_user_followings_path(user) %></br>
+          フォロワー: <%= link_to user.followers.count, admin_user_followers_path(user) %></br>
         <% end %>
-      </td>
-      <td>
+      
         <% if user.is_deleted? %>
-          <span class="text-invalid">退会済み</span>
+          退会済み
         <% else %>
-          <span class="text-active">有効</span>
+          有効
         <% end %>
       </td>
     </tr>
-    
   <% end %>
 </table>
       

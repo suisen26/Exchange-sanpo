@@ -1,4 +1,4 @@
-<div class="container py-4">
+<div class="container">
   <div class="row">
 
   <div class="col-md-3 mb-5">
@@ -20,7 +20,7 @@
           <%= image_tag @post.get_post_image(300, 200) %>
         </div>
         
-        <div class="col-md-6">
+        <div class="col-md-6 center">
           <div class="mb-2">投稿日: <%= @post.created_at.strftime("%Y/%m/%d") %></div>
           <div class="mb-2">ジャンル名: <%= @post.genre.name %></div>
           <div class="mb-2">コメント件数: <%= @post.post_comments.count %></div>
@@ -28,7 +28,7 @@
             <i class="fas fa-heart" aria-hidden="true", style="color: blue;"></i><%= @post.favorites.count %> いいね
           </div>
           <div class="col-md-5 mb-2">
-            <%= link_to "削除する", admin_post_path(@post), method: :delete, class: "btn btn-danger btn-block" %>
+            <%= link_to "削除する", admin_post_path(@post), method: :delete, class: "btn btn-danger" %>
           </div>
         </div>
       </div>
@@ -46,7 +46,7 @@
             <div class="text-right"><%= link_to post_comment.user.name, admin_user_path(post_comment.user) %></div>
           </div>
           <div class="col-md-2 d-flex align-self-center mb-2">
-            <%= link_to "削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger btn-block" %>
+            <%= link_to "削除する", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-danger" %>
           </div>
         <% end %>
       </div>

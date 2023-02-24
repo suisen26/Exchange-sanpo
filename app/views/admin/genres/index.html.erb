@@ -1,4 +1,4 @@
-<div class="container py-4">
+<div class="container">
   <div class="row">
     <div class="col-12 col-lg-8 mx-auto">
 
@@ -19,9 +19,9 @@
       <table class="table col-md-8 mx-auto">
         <% @genres.each do |genre| %>
           <tr>
-            <td><%= genre.name %></td>
-            <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-primary" %></td>
-            <td><%= link_to "削除する", admin_genre_path(genre.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
+            <td class="genre-index"><%= genre.name %></td>
+            <td class="genre-index"><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-sm btn-primary" %></td>
+            <td class="genre-index"><%= link_to "削除する", admin_genre_path(genre.id), method: :delete, class: "btn btn-sm btn-danger" %></td>
           </tr>
         <% end %>
       </table>
