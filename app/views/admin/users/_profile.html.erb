@@ -1,25 +1,27 @@
-<table class="table">
-  <%= link_to admin_user_path(user) do %>
+<table class="table-hover table-sm">
+  <tr>
+    <td>
+      <%= link_to admin_user_path(user) do %>
+        <%= image_tag user.get_profile_image(100, 100) %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>名前: <%= user.name %></td>
+  </tr>
+  <tr>
+    <td>紹介文</br><%= user.introduction %></td>
+  </tr>
+  <tr>
+    <td>いいね一覧: <%= link_to user.favorites.count, favorites_admin_user_path(user) %></td>
+  </tr>
+  <% if user.name != "ゲストユーザー" %>
     <tr>
-      <td><%= image_tag user.get_profile_image(100, 100) %></td>
+      <td>フォロー: <%= link_to user.followings.count, admin_user_followings_path(user) %></td>
     </tr>
     <tr>
-      <td>名前: <%= user.name %></td>
+      <td>フォロワー: <%= link_to user.followers.count, admin_user_followers_path(user) %></td>
     </tr>
-    <tr>
-      <td>紹介文</br><%= user.introduction %></td>
-    </tr>
-    <tr>
-      <td>いいね一覧: <%= link_to user.favorites.count, favorites_admin_user_path(user) %></td>
-    </tr>
-    <% if user.name != "ゲストユーザー" %>
-      <tr>
-        <td>フォロー: <%= link_to user.followings.count, admin_user_followings_path(user) %></td>
-      </tr>
-      <tr>
-        <td>フォロワー: <%= link_to user.followers.count, admin_user_followers_path(user) %></td>
-      </tr>
-    <% end %>
   <% end %>
   <tr>
     <td class="td-border-none"><%= link_to "退会させる", confirm_withdraw_admin_user_path(id: user.id), class: "btn btn-danger" %></td>

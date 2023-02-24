@@ -1,25 +1,27 @@
 <table class="table-hover table-sm">
-  <%= link_to user_path(user) do %>
+  <tr>
+    <td>
+      <%= link_to user_path(user) do %>
+        <%= image_tag user.get_profile_image(100, 100) %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>名前: <%= user.name %></td>
+  </tr>
+  <tr>
+    <td>紹介文</br><%= user.introduction %></td>
+  </tr>
+  <tr>
+    <td>いいね一覧: <%= link_to user.favorites.count, favorites_user_path(user) %></th>
+  </tr>
+  <% if user.name != "ゲストユーザー" %>
     <tr>
-      <td><%= image_tag user.get_profile_image(100, 100) %></td>
+      <td>フォロー: <%= link_to user.followings.count, user_followings_path(user) %></td>
     </tr>
     <tr>
-      <td>名前: <%= user.name %></td>
+      <td>フォロワー: <%= link_to user.followers.count, user_followers_path(user) %></td>
     </tr>
-    <tr>
-      <td>紹介文</br><%= user.introduction %></td>
-    </tr>
-    <tr>
-      <td>いいね一覧: <%= link_to user.favorites.count, favorites_user_path(user) %></th>
-    </tr>
-    <% if user.name != "ゲストユーザー" %>
-      <tr>
-        <td>フォロー: <%= link_to user.followings.count, user_followings_path(user) %></td>
-      </tr>
-      <tr>
-        <td>フォロワー: <%= link_to user.followers.count, user_followers_path(user) %></td>
-      </tr>
-    <% end %>
   <% end %>
  
   <!-- ユーザーがログインしている場合 -->
