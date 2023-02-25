@@ -30,6 +30,8 @@ ja: # 日本語の設定を行う
         text: 文章
         post_image: 写真
         genre_id: ジャンル
+      genre: # Genreモデルの属性の設定を行う
+        name: ジャンル名
     models:
       user: ユーザー
   devise:

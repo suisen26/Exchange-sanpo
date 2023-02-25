@@ -1,6 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col-12 col-lg-8 mx-auto">
+      
+      <% if @genre.errors.any? %>
+        <div class="row d-flex align-self-center justify-content-center">
+          <div class="alert alert-secondary mt-1 py-0">
+            <h5 class="text-center">
+              <%= @genre.errors.count %>件のエラーが発生しました。
+            </h5>
+            
+            <div class="row d-flex align-self-center justify-content-center">
+              <ul>
+                <% @genre.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
 
       <h2 class="text-center mb-3">ジャンル編集</h2>
       <%= form_with model: @genre, url: admin_genre_path(@genre), method: :patch do |f| %>
