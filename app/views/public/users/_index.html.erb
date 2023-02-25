@@ -9,8 +9,10 @@
       </td>
     
       <td class="text-break">
-        <%= link_to user_path(user) do %>
-          <%= user.introduction.truncate(100) %>
+        <% if user.introduction.present? %>
+          <%= link_to user_path(user) do %>
+            <%= user.introduction.truncate(100) %>
+          <% end %>
         <% end %>
       </td>
     
