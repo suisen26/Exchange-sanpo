@@ -9,6 +9,7 @@
       <% end %>
       
       <div>
+        投稿の感情分析スコア: <%= post.score %></br>
         <span class="mr-2">コメント件数: <%= post.post_comments.count %></span>
         <%= render "public/favorites/favorite", post: post %>
       </div>

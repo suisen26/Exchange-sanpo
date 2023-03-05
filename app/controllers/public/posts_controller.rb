@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    if post.score = Language.get_data(post_params[:body])
+    if @post.score = Language.get_data(post_params[:text])
       @post.save
       redirect_to post_path(@post), notice: "投稿の作成に成功しました！"
     else
