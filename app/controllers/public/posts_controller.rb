@@ -21,6 +21,10 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      tags = Vision.get_image_data(post.image)
+      tags.each do |tag|
+        post.tags.create(name: tag)
+      end
       redirect_to post_path(@post), notice: "投稿の作成に成功しました！"
     else
       render :new
