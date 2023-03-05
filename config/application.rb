@@ -11,9 +11,6 @@ module Sanpo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     
-    # 自作したlib/vision.rbを読み込む
-    config.paths.add 'lib', eager_load: true
-    
     # Railsアプリケーションのデフォルト言語を国際化(i18n)を用い、日本語にする
     config.i18n.default_locale = :ja
     
